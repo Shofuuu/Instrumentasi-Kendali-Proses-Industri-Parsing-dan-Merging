@@ -2,7 +2,12 @@
  Trainer KMDEI (Merger)
 ***********************/
 
+#ifndef F_CPU
+	#define F_CPU 16000000UL
+#endif
+
 #include <Arduino.h>
+#include "lib/parse_merger.h"
 
 void setup(){Serial.begin(9600);}
 
