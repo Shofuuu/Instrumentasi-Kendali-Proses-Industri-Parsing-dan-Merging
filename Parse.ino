@@ -7,7 +7,11 @@ static unsigned char pos_m = 0;
 
 void turn_motor(unsigned char _pos_){
   if(_pos_ == 1){
-    digitalWrite();
+    digitalWrite(7, 1);
+    digitalWrite(8, 0);
+  }else{
+    digitalWrite(7, 0);
+    digitalWrite(8, 1);
   }
 }
 
@@ -46,6 +50,6 @@ void loop(){
     pwm_val = DATA_STR(0).toInt();
   }
   
-  if(pos_m == 1){
-  }
+  turn_motor(pos_m);
+  analogWrite(id_m, pwm_val);
 }
