@@ -37,7 +37,7 @@ void loop(){
     
     Serial.println("-==| DATA RECEIVED! |==-");
     Serial.println("Data Total\t: " + String(get_data_total()));
-    Serial.println("ID motor\t\t: " + DATA_STR(0));
+    Serial.println("ID motor\t: " + DATA_STR(0));
     Serial.println("Arah Putar\t: " + DATA_STR(1));
     Serial.println("Nilai PWM\t: " + DATA_STR(2) + "\n\n");
     
@@ -47,7 +47,11 @@ void loop(){
     }else if(DATA_STR(0) == "1"){
       id_m = 6;
       analogWrite(5, 0);
-    }else id_m = 0;
+    }else{
+      id_m = 0;
+      analogWrite(5, 0);
+      analogWrite(6, 0);
+    }
     
     if(DATA_STR(1) == "0" || DATA_STR(1) == "left") pos_m = 0;
     else if(DATA_STR(1) == "1" || DATA_STR(1) == "right") pos_m = 1;
