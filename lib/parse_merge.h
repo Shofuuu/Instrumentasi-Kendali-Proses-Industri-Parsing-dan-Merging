@@ -3,41 +3,40 @@
 * by Muhammad Shofuwan Anwar
 */
 
-#define DATA_STR(x) __data_flock__[x]
-#define WAIT_DATA_UNTIL(x) __data__ = Serial.readStringUntil(x)
+#define DATA_STR(x) data_flock[x]
+#define WAIT_DATA_UNTIL(x) data = Serial.readStringUntil(x)
 #define MAX 10
 
-static String __data__ = "";
-static String __data_flock__[MAX];
+static String data = "";
+static String data_flock[MAX];
 
 static void clear_str(void){
-    for(int x=0;x<MAX;x++)
-        __data_flock__[x] = "";
+    for(int x=0; x<MAX; x++)
+        data_flock[x] = "";
 }
 
 static void parse_string(){
     int counter = 0;
     String temp = "";
 
-    if(__data__[__data__.length()-2] != ';')
-        __data__ += ';';
+    if(data[data.length()-2] != ';')
+        data = data + ';';
 
-    for(int x=0;x<__data__.length();x++){
-        if(__data__[x] != ';'){
-            temp += __data_flock__[x];
-        }else{
-            __data_flock__[counter] = temp;
-            counter++;
+    for(int x=0; x<data.length(); x++){
+        if(data[x] == ';'){
+            data_flock[counter] = temp;
             temp = "";
-        }
+            counter++;
+        }else
+            temp = temp + data[x];
     }
 }
 
 static int get_data_total(){
     int total = 0;
 
-    for(int x=0;x<MAX;x++){
-        if(__data_flock__[x] != "")
+    for(int x=0; x<MAX; x++){
+        if(data_flock[x] != "")
             total++;
     }
 
