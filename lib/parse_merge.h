@@ -1,4 +1,5 @@
 #define DATA_STR(x) __data_flock__[x]
+#define WAIT_DATA_UNTIL(x) __data__ = Serial.readStringUntil(x)
 #define MAX 10
 
 static String __data__ = "";
