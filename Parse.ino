@@ -5,10 +5,23 @@ static unsigned char pwm_val = 0;
 static unsigned char id_m = 0;
 static unsigned char pos_m = 0;
 
+void turn_motor(unsigned char _pos_){
+  if(_pos_ == 1){
+    digitalWrite();
+  }
+}
+
 void setup(){
   Serial.begin(9600);
-  pinMode(5, OUTPUT); // motor left control (0)
-  pinMode(6, OUTPUT); // motor right control (1)
+  
+  /*
+  * 5 -> motor left
+  * 6 -> motor right
+  * 7 -> control right
+  * 8 -> control left
+  */
+  for(int x=5; x<=8; x++)
+    pinMode(x, OUTPUT);
 }
 
 void loop(){
