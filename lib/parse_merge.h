@@ -13,7 +13,7 @@ static void parse_string(){
     int counter = 0;
     String temp = "";
 
-    if(data[data.length()-1] != ';')
+    if(data[data.length()-2] != ';')
         data += ';';
 
     for(int x=0;x<data.length();x++){
@@ -38,7 +38,7 @@ static int get_data_total(){
     return total;
 }
 
-void ADC_Init(unsigned char mux){
+/*void ADC_Init(unsigned char mux){
     ADCSRA |= (1<<ADEN);
     ADMUX = (1<<mux);
     ADMUX |= (1<<REFS0) | (1<<REFS1);
@@ -51,4 +51,4 @@ int ADC_Read(unsigned char mux){
     ADCSRA |= (1<<ADSC);
     while((ADCSRA & (1<<ADSC)));
     return ADCW;
-}
+}*/
