@@ -1,26 +1,26 @@
-#define DATA_STR(x) data_flock[x]
+#define DATA_STR(x) __data_flock__[x]
 #define MAX 10
 
-static String data = "";
-static String data_flock[MAX];
+static String __data__ = "";
+static String __data_flock__[MAX];
 
 static void clear_str(void){
     for(int x=0;x<MAX;x++)
-        data_flock[x] = "";
+        __data_flock__[x] = "";
 }
 
 static void parse_string(){
     int counter = 0;
     String temp = "";
 
-    if(data[data.length()-2] != ';')
-        data += ';';
+    if(__data__[__data__.length()-2] != ';')
+        __data__ += ';';
 
-    for(int x=0;x<data.length();x++){
-        if(data[x] != ';'){
-            temp += data[x];
+    for(int x=0;x<__data__.length();x++){
+        if(__data__[x] != ';'){
+            temp += __data_flock__[x];
         }else{
-            data_flock[counter] = temp;
+            __data_flock__[counter] = temp;
             counter++;
             temp = "";
         }
@@ -31,7 +31,7 @@ static int get_data_total(){
     int total = 0;
 
     for(int x=0;x<MAX;x++){
-        if(data_flock[x] != "")
+        if(__data_flock__[x] != "")
             total++;
     }
 
