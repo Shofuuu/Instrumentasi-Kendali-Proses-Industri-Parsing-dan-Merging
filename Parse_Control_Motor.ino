@@ -35,9 +35,9 @@ void loop(){
     WAIT_DATA_UNTIL('\n');
     parse_string();
     
-    Serial.println("-==| DATA RECEIVED! |==-");
+    Serial.println("\n-==| DATA RECEIVED! |==-");
     Serial.println("Data Total\t: " + String(get_data_total()));
-    Serial.println("ID motor\t: " + DATA_STR(0));
+    Serial.println("ID motor\t\t: " + DATA_STR(0));
     Serial.println("Arah Putar\t: " + DATA_STR(1));
     Serial.println("Nilai PWM\t: " + DATA_STR(2));
     
