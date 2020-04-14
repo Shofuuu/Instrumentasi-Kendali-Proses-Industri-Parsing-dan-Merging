@@ -26,6 +26,8 @@ void setup(){
   */
   for(int x=5; x<=8; x++)
     pinMode(x, OUTPUT);
+
+  Serial.println("Ready to Receive Command!");
 }
 
 void loop(){
@@ -35,7 +37,7 @@ void loop(){
     
     Serial.println("-==| DATA RECEIVED! |==-");
     Serial.println("Data Total\t: " + String(get_data_total()));
-    Serial.println("ID motor\t\t: " + DATA_STR(0));
+    Serial.println("ID motor\t: " + DATA_STR(0));
     Serial.println("Arah Putar\t: " + DATA_STR(1));
     Serial.println("Nilai PWM\t: " + DATA_STR(2));
     
@@ -47,7 +49,7 @@ void loop(){
     else if(DATA_STR(1) == "1" || DATA_STR(1) == "right") pos_m = 1;
     else pos_m = 0;
     
-    pwm_val = DATA_STR(0).toInt();
+    pwm_val = DATA_STR(2).toInt();
   }
   
   turn_motor(pos_m);
